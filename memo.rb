@@ -8,8 +8,8 @@ when "1" # 新規メモ作成
 puts "新規でメモを作成します"
     puts "ファイル名を入力してください。(拡張子は不要)"
     memo_title = gets.chomp.to_s
-    puts "ファイルの内容を入力"
-    memo_content = gets.chomp.to_s 
+    puts "ファイルの内容を入力(Ctrl+Dで終了)"
+    memo_content = STDIN.read.chomp.to_s 
     CSV.open(memo_title,'w')do|csv|
     csv << [memo_content]
     end
@@ -18,8 +18,8 @@ when "2"  # 既存のメモを編集
     puts "既存のメモを編集します"
     puts "編集したいメモのファイル名を入力。（拡張子不要）"
     memo_title = gets.chomp.to_s
-    puts "内容に追記"
-    memo_content = gets.chomp.to_s 
+    puts "内容に追記(Ctrl+Dで終了)"
+    memo_content = STDIN.read.chomp.to_s 
     CSV.open(memo_title,'a')do|csv|
     csv << [memo_content]
     end
